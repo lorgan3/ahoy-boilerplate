@@ -27,3 +27,143 @@
   overflow: auto;
   padding: 24px 32px;
 }
+
+/* --- Topbar (secondary nav + quick actions) --- */
+
+.topbar {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  background-color: var(--color-neutral-lightest);
+  border-bottom: 1px solid var(--color-neutral);
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.topbarSecondary {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: stretch;
+}
+
+.topbarActions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding: 0 18px 0 12px;
+  flex-shrink: 0;
+}
+
+.searchBar {
+  width: 220px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--color-neutral-dark);
+  border-radius: 4px;
+  background-color: var(--color-neutral-lightest);
+  transition: border-color 0.15s ease;
+  cursor: text;
+}
+
+.searchBar:focus-within {
+  border-color: var(--color-teal-darkest);
+  box-shadow: 0 0 0 2px hsl(var(--color-teal-hsl) / 24%);
+}
+
+.searchIcon {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-neutral-darkest);
+  flex-shrink: 0;
+}
+
+.searchInput {
+  flex: 1;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--color-teal-darkest);
+  min-width: 0;
+}
+
+.searchInput::placeholder {
+  color: var(--color-neutral-dark);
+}
+
+.iconBadgeWrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.notificationBadge {
+  position: absolute;
+  top: -2px;
+  right: -3px;
+  box-shadow: 0 0 0 2px var(--color-neutral-lightest);
+  pointer-events: none;
+}
+
+/* The SVG icon has its own padding so the button itself doesn't add any. */
+.changelogButton {
+  padding: 0 !important;
+}
+
+/* Round 30px button (height 30, border-radius 15 → full circle) in its
+   marketing variant: violet background, white icon. */
+.vecteraButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 30px;
+  padding: 0;
+  border-radius: 50%;
+  text-decoration: none;
+  background-color: var(--color-neutral-light);
+  border: 1px solid var(--color-neutral-dark);
+}
+
+.vecteraButton:hover {
+  background-color: var(--color-neutral);
+  border-color: var(--color-neutral-darkest);
+}
+
+.vecteraButton:focus-visible {
+  outline: none;
+  background-color: var(--color-neutral-light);
+  border-color: var(--color-neutral-darkest);
+  box-shadow: 0 0 0 1px var(--color-neutral-darkest);
+}
+
+.vecteraButton:active {
+  background-color: var(--color-neutral);
+}
+
+.vecteraButtonMarketing {
+  background-color: var(--color-violet);
+  border-color: var(--color-violet);
+}
+
+.vecteraButtonMarketing:hover {
+  background-color: var(--color-violet-dark);
+  border-color: var(--color-violet-dark);
+}
+
+.vecteraButtonMarketing:focus-visible {
+  background-color: var(--color-violet-dark);
+  border-color: var(--color-neutral-lightest);
+  box-shadow: 0 0 0 2px var(--color-violet-light);
+}
+
+.vecteraButtonMarketing:active {
+  background-color: var(--color-violet-dark);
+  border-color: var(--color-violet-dark);
+  box-shadow: inset 0 2px 3px rgba(0 0 0 / 24%);
+}
