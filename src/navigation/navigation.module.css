@@ -1,0 +1,194 @@
+/* Primary navigation: vertical icon rail with logo block on top. */
+
+.primary {
+  background: var(--color-teal-dark);
+  width: 144px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* --- Logo block at the top of the primary nav --- */
+
+.logoWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 84px;
+  height: 84px;
+  width: 100%;
+  flex-grow: 0;
+  user-select: none;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--color-teal-dark);
+  text-decoration: none;
+}
+
+.logoWrapper:active {
+  box-shadow: inset 0 1px 3px 0 var(--color-teal-darkest);
+}
+
+.logo {
+  color: var(--color-neutral-lightest);
+  pointer-events: none;
+  width: 54px;
+  height: 54px;
+  border-radius: 4px;
+}
+
+.logoActive .logo {
+  background: var(--color-mint);
+}
+
+.logoClickable:not(.logoActive):hover .logo {
+  background: hsl(var(--color-teal-light-hsl) / 12%);
+}
+
+/* --- Modules list scroll container --- */
+
+.modulesContainer {
+  flex: 1;
+  width: 100%;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--color-teal-hsl) / 84%) hsl(var(--color-teal-hsl) / 6%);
+}
+
+.modulesContainer::-webkit-scrollbar,
+.modulesContainer::-webkit-scrollbar-track {
+  background: hsl(var(--color-teal-hsl) / 6%);
+}
+
+.modulesContainer::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--color-teal-hsl) / 84%);
+  border: 5px solid hsl(var(--color-teal-dark-hsl) / 84%);
+}
+
+.modulesList {
+  position: relative;
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Individual module entry (icon + label) --- */
+
+.module {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  position: relative;
+  color: var(--color-neutral-lightest);
+  min-height: 54px;
+  padding: 12px;
+  text-decoration: none;
+}
+
+.module:hover {
+  text-decoration: none;
+  cursor: pointer;
+  background: hsl(var(--color-teal-light-hsl) / 12%);
+}
+
+.module:active {
+  box-shadow: inset 0 1px 3px 0 var(--color-teal-dark);
+}
+
+.module:focus-visible {
+  outline: none;
+  box-shadow:
+    inset 0 2px 0 0 var(--color-mint),
+    inset 0 -2px 0 0 var(--color-mint),
+    inset 2px 0 0 0 var(--color-mint),
+    inset -2px 0 0 0 var(--color-mint);
+}
+
+.moduleActive,
+.moduleActive:hover {
+  background-color: var(--color-mint);
+}
+
+.moduleIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.moduleTitle {
+  user-select: none;
+  margin-top: 4px;
+  color: var(--color-neutral-lightest);
+}
+
+/* --- Tertiary navigation (left sub-rail in /settings) --- */
+
+.tertiary {
+  width: 200px;
+  height: 100%;
+  border-right: 1px solid var(--color-neutral);
+  flex-shrink: 0;
+  background-color: white;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.tertiaryList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.tertiaryItem {
+  display: flex;
+}
+
+.tertiaryLink {
+  display: flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 0 16px 0 24px;
+  text-decoration: none;
+  color: var(--color-teal-darkest);
+  width: 100%;
+  position: relative;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.tertiaryLink:hover {
+  background-color: var(--color-neutral-light);
+  text-decoration: none;
+}
+
+.tertiaryLink::first-letter {
+  text-transform: capitalize;
+}
+
+.tertiaryLink::after {
+  content: '';
+  position: absolute;
+  box-shadow: inset -3px 0 0 0 var(--color-mint);
+  height: 100%;
+  width: 3px;
+  bottom: 0;
+  right: 0;
+  transition: transform 0.2s ease-out;
+  transform: scale(1, 0);
+}
+
+.tertiaryLinkActive {
+  background-color: var(--color-neutral-light);
+}
+
+.tertiaryLinkActive::after {
+  transform: scale(1, 1);
+}
