@@ -14,6 +14,7 @@ import {
 } from '@teamleader/ahoy';
 import type { ReactNode } from 'react';
 
+import { USER_NAME, NOTIFICATION_COUNT } from '../config';
 import ChangelogIcon from './ChangelogIcon';
 import VecteraButton from './VecteraButton';
 import s from './shell.module.css';
@@ -55,7 +56,7 @@ const Topbar = ({ children }: TopbarProps) => {
             title="Notifications"
           />
           <Counter
-            count={12}
+            count={NOTIFICATION_COUNT}
             maxCount={9}
             color="ruby"
             size="small"
@@ -90,7 +91,7 @@ const Topbar = ({ children }: TopbarProps) => {
 
         <VecteraButton />
 
-        <Avatar fullName="Lennert Claeys" id={AVATAR_ID} size="small" />
+        <Avatar fullName={USER_NAME} id={AVATAR_ID} size="small" />
       </div>
     </header>
   );
