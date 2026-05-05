@@ -20,7 +20,7 @@ const PrimaryNavigation = () => {
           {MODULES.map((module) => {
             const isActive = module.id === activeModuleId;
             const IconComponent = isActive ? module.iconActive : module.icon;
-            const target = module.id === 'settings' ? '/settings' : `/${module.id}/overview`;
+            const target = module.path ?? `/${module.id}/overview`;
 
             return (
               <a
