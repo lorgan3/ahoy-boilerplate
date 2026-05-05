@@ -18,11 +18,13 @@ const App = () => {
           <Route index element={<Navigate to="general/overview" replace />} />
           <Route path=":section/overview" element={<SettingsOverviewPage />} />
           <Route path=":section/detail" element={<SettingsDetailPage />} />
+          <Route path=":section/:tab" element={<SettingsOverviewPage />} />
         </Route>
 
         <Route path=":module" element={<ModuleLayout />}>
           <Route path="overview" element={<ModuleOverviewPage />} />
           <Route path="detail" element={<ModuleDetailPage />} />
+          <Route path=":tab" element={<ModuleOverviewPage />} />
         </Route>
 
         <Route path="*" element={<Navigate to="/dashboard/overview" replace />} />
