@@ -1,0 +1,13 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+.vite
+.env.local
+.env.*.local
+*.log
+*.tsbuildinfo
+
+# CLAUDE.md is part of this repo (overrides the user's global gitignore).
+!CLAUDE.md

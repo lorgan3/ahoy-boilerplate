@@ -1,0 +1,30 @@
+/* Ahoy foundation: design tokens (colors, typography, animations, utilities). */
+@import url('@teamleader/ahoy/dist/es/foundation/colors/index.css');
+@import url('@teamleader/ahoy/dist/es/foundation/typography/index.css');
+@import url('@teamleader/ahoy/dist/es/foundation/animations/index.css');
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  /* Inter is loaded in index.html with `display=optional` to avoid font
+     flicker; the fallback chain keeps the layout stable if Inter doesn't
+     arrive in time. */
+  font-family: 'Inter', trebuchet ms, verdana, 'Arial', sans-serif;
+  background-color: var(--color-neutral-lightest, #f4f5f6);
+  color: var(--color-teal-darkest, #1a2026);
+}
+
+/* ahoy's typography foundation defines text styles as `Inter, fallback…`
+   directly. We override the typography variables to use the same family chain
+   everywhere, in case anything inside ahoy reads from `--font-family-base`. */
+:root {
+  --font-family-base: 'Inter', trebuchet ms, verdana, 'Arial', sans-serif;
+  --font-family-inter: 'Inter', trebuchet ms, verdana, 'Arial', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
