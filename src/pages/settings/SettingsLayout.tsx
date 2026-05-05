@@ -1,15 +1,21 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 
-import SecondaryNavigationSettings from './SecondaryNavigationSettings';
+import SecondaryNavigation from '../../navigation/SecondaryNavigation';
 import TertiaryNavigation from '../../navigation/TertiaryNavigation';
 import Topbar from '../../shell/Topbar';
+import { DEFAULT_TABS } from '../../navigation/modules';
+import { findTertiaryItem } from './tertiaryItems';
 import shell from '../../shell/shell.module.css';
 
 const SettingsLayout = () => {
+  const { section } = useParams();
+  const item = findTertiaryItem(section);
+  const tabs = item?.tabs ?? DEFAULT_TABS;
+
   return (
     <>
       <Topbar>
-        <SecondaryNavigationSettings />
+        <SecondaryNavigation tabs={tabs} basePath={`/settings/${section ?? 'general'}`} />
       </Topbar>
       <div className={shell.contentBelow}>
         <TertiaryNavigation />
