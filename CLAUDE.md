@@ -31,12 +31,18 @@ generic `:module` route so it wins:
 </Route>
 ```
 
-**A secondary tab** — add a `<Route>` inside the `:module` block in
-`src/App.tsx` and a matching `<TitleTab>` in
-`src/navigation/SecondaryNavigation.tsx`.
+**A secondary tab** — add `{ id: '<id>', label: '<Label>' }` to the `tabs`
+array on the module entry in `src/navigation/modules.ts`. A placeholder page
+renders automatically. Add a dedicated `<Route>` in `src/App.tsx` and a page
+component under `src/pages/<module>/` only when you need a real page component.
+
+**A settings tab** — same pattern: add `{ id: '<id>', label: '<Label>' }` to
+the `tabs` array on the relevant entry in `src/pages/settings/tertiaryItems.ts`.
 
 **A settings section** — append `{ id, label }` to
 `src/pages/settings/tertiaryItems.ts`.
+
+**Prototype-time constants** (user name, notification count) — edit `src/config.ts`.
 
 **Design tokens** — `src/global.css` already imports ahoy's foundation, so
 your own CSS can reference `var(--color-mint-darkest)`,
