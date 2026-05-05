@@ -1,35 +1,28 @@
 import { TabGroup, TitleTab } from '@teamleader/ahoy';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-import { findModule } from './modules';
+import type { TabDefinition } from './modules';
 
-const SecondaryNavigation = () => {
+interface Props {
+  tabs: TabDefinition[];
+  basePath: string;
+}
+
+const SecondaryNavigation = ({ tabs, basePath }: Props) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { module: moduleId } = useParams();
-  const moduleDefinition = findModule(moduleId);
-
-  if (!moduleDefinition) {
-    return null;
-  }
-
-  const isOverview = location.pathname.endsWith('/overview');
-  const isDetail = location.pathname.endsWith('/detail');
 
   return (
     <TabGroup>
-      <TitleTab
-        active={isOverview}
-        onClick={() => navigate(`/${moduleDefinition.id}/overview`)}
-      >
-        Overview
-      </TitleTab>
-      <TitleTab
-        active={isDetail}
-        onClick={() => navigate(`/${moduleDefinition.id}/detail`)}
-      >
-        Detail
-      </TitleTab>
+      {tabs.map((tab) => (
+        <TitleTab
+          key={tab.id}
+          active={location.pathname.endsWith(`/${tab.id}`)}
+          onClick={() => navigate(`${basePath}/${tab.id}`)}
+        >
+          {tab.label}
+        </TitleTab>
+      ))}
     </TabGroup>
   );
 };
