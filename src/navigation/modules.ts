@@ -32,11 +32,23 @@ import {
 } from '@teamleader/ahoy';
 import type { ComponentType } from 'react';
 
+export interface TabDefinition {
+  id: string;
+  label: string;
+}
+
+export const DEFAULT_TABS: TabDefinition[] = [
+  { id: 'overview', label: 'Overview' },
+  { id: 'detail',   label: 'Detail'   },
+];
+
 export interface ModuleDefinition {
   id: string;
   label: string;
   icon: ComponentType;
   iconActive: ComponentType;
+  tabs?: TabDefinition[];
+  path?: string;
 }
 
 // Dashboard is reachable via the logo at the top of the primary nav, so it is
@@ -51,26 +63,21 @@ export const DASHBOARD_MODULE: ModuleDefinition = {
 };
 
 export const MODULES: ModuleDefinition[] = [
-  { id: 'calendar', label: 'Calendar', icon: IconCalendarMediumOutline, iconActive: IconCalendarMediumFilled },
-  { id: 'contacts', label: 'Contacts', icon: IconContactsMediumOutline, iconActive: IconContactsMediumFilled },
-  { id: 'companies', label: 'Companies', icon: IconBuildingMediumOutline, iconActive: IconBuildingMediumFilled },
-  {
-    id: 'deals',
-    label: 'Deals',
-    icon: IconCheckmarkBadgedMediumOutline,
-    iconActive: IconCheckmarkBadgedMediumFilled,
-  },
-  { id: 'quotations', label: 'Quotations', icon: IconDocumentMediumOutline, iconActive: IconDocumentMediumFilled },
-  { id: 'projects', label: 'Projects', icon: IconProjectsMediumOutline, iconActive: IconProjectsMediumFilled },
-  { id: 'planning', label: 'Planning', icon: IconKanbanMediumOutline, iconActive: IconKanbanMediumFilled },
-  { id: 'invoices', label: 'Revenue', icon: IconMoneyMediumOutline, iconActive: IconMoneyMediumFilled },
-  { id: 'expenses', label: 'Expenses', icon: IconExpensesMediumOutline, iconActive: IconExpensesMediumFilled },
-  { id: 'workorders', label: 'Work orders', icon: IconWorkorderMediumOutline, iconActive: IconWorkorderMediumFilled },
-  { id: 'tickets', label: 'Tickets', icon: IconHeadsetMediumOutline, iconActive: IconHeadsetMediumFilled },
-  { id: 'products', label: 'Products', icon: IconProductsMediumOutline, iconActive: IconProductsMediumFilled },
-  { id: 'timesheets', label: 'Timesheets', icon: IconTimerMediumOutline, iconActive: IconTimerMediumFilled },
-  { id: 'insights', label: 'Insights', icon: IconStatsMediumOutline, iconActive: IconStatsMediumFilled },
-  { id: 'settings', label: 'Settings', icon: IconSettingsMediumOutline, iconActive: IconSettingsMediumFilled },
+  { id: 'calendar',   label: 'Calendar',    icon: IconCalendarMediumOutline,        iconActive: IconCalendarMediumFilled },
+  { id: 'contacts',   label: 'Contacts',    icon: IconContactsMediumOutline,        iconActive: IconContactsMediumFilled },
+  { id: 'companies',  label: 'Companies',   icon: IconBuildingMediumOutline,        iconActive: IconBuildingMediumFilled },
+  { id: 'deals',      label: 'Deals',       icon: IconCheckmarkBadgedMediumOutline, iconActive: IconCheckmarkBadgedMediumFilled },
+  { id: 'quotations', label: 'Quotations',  icon: IconDocumentMediumOutline,        iconActive: IconDocumentMediumFilled },
+  { id: 'projects',   label: 'Projects',    icon: IconProjectsMediumOutline,        iconActive: IconProjectsMediumFilled },
+  { id: 'planning',   label: 'Planning',    icon: IconKanbanMediumOutline,          iconActive: IconKanbanMediumFilled },
+  { id: 'invoices',   label: 'Revenue',     icon: IconMoneyMediumOutline,           iconActive: IconMoneyMediumFilled },
+  { id: 'expenses',   label: 'Expenses',    icon: IconExpensesMediumOutline,        iconActive: IconExpensesMediumFilled },
+  { id: 'workorders', label: 'Work orders', icon: IconWorkorderMediumOutline,       iconActive: IconWorkorderMediumFilled },
+  { id: 'tickets',    label: 'Tickets',     icon: IconHeadsetMediumOutline,         iconActive: IconHeadsetMediumFilled },
+  { id: 'products',   label: 'Products',    icon: IconProductsMediumOutline,        iconActive: IconProductsMediumFilled },
+  { id: 'timesheets', label: 'Timesheets',  icon: IconTimerMediumOutline,           iconActive: IconTimerMediumFilled },
+  { id: 'insights',   label: 'Insights',    icon: IconStatsMediumOutline,           iconActive: IconStatsMediumFilled },
+  { id: 'settings',   label: 'Settings',    icon: IconSettingsMediumOutline,        iconActive: IconSettingsMediumFilled, path: '/settings' },
 ];
 
 export const findModule = (id: string | undefined): ModuleDefinition | undefined => {
